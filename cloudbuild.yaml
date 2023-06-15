@@ -7,7 +7,7 @@ steps:
     entrypoint: '/bin/bash'
     args: ['-c', 'gcloud run deploy nextjs-socal-surf --image gcr.io/socalsurf/startup-nextjs-socal-surf --platform managed --region us-central1 --project socalsurf --allow-unauthenticated']
 images:
-  - 'gcr.io/flask-app-2023-387823/my_flask_app'
+  - 'gcr.io/socalsurf/startup-nextjs-socal-surf'
 
 # Replace the following with your own
 # args --> gcr.io/[PROJECT_ID]/[ROOT_DIR]

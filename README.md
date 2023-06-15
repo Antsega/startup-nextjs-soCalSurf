@@ -61,6 +61,7 @@ You can automate the build and deployment process with Google Cloud Build.
 
 **Step 4.1: Enable API**
 Cloud Build API
+Artifact Registry API
 
 **Step 4.1: Creating a Build Trigger**
 
