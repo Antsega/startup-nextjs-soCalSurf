@@ -1,0 +1,14 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/socalsurf/startup-nextjs-socal-surf', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/socalsurf/startup-nextjs-socal-surf']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: '/bin/bash'
+    args: ['-c', 'gcloud run deploy nextjs-socal-surf --image gcr.io/socalsurf/startup-nextjs-socal-surf --platform managed --region us-central1 --project socalsurf --allow-unauthenticated']
+images:
+  - 'gcr.io/flask-app-2023-387823/my_flask_app'
+
+# Replace the following with your own
+# args --> gcr.io/[PROJECT_ID]/[ROOT_DIR]
+# args --> gcloud run deploy [SERVICE_NAME] --image gcr.io/[PROJECT_ID]/[ROOT_DIR] --platform managed --region [REGION_NAME] --project [PROJECT_ID]`
