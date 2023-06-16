@@ -17,7 +17,7 @@ const ContactPage = () => {
 
       <div style={{ textAlign: 'center', margin: '40px' }}>
         {/* Use the DonationButton component */}
-        <DonationButton stripePublicKey = {publicKey} />
+        <DonationButton stripePublicKey={publicKey} stripeProductId="prod_O5dwfwvvxH6siw" />
       </div>
     </>
   );

@@ -1,17 +1,17 @@
 // components/DonationButton.tsx
-
+import { NextApiRequest, NextApiResponse } from 'next';
 import React from 'react';
 
-const DonationButton = ({ stripePublicKey }) => {
-
+const DonationButton = ({ stripePublicKey, stripeProductId }) => {
   const handleDonation = async () => {
     console.log('handleDonation called'); // Add this log
 
     try {
       // Fetch the Checkout Session from your API
       console.log('Fetching checkout session'); // Add this log
-      const response = await fetch('../../pages/api/checkout_sessions.js', {
+      const response = await fetch('/api/route.js', {
         method: 'POST',
+        body: JSON.stringify({ amount: 1, productId: stripeProductId }),
       });
       const session = await response.json();
       console.log('Checkout session:', session); // Add this log
@@ -26,7 +26,6 @@ const DonationButton = ({ stripePublicKey }) => {
       if (error) {
         console.error('Error redirecting to Stripe checkout:', error);
       }
-
     } catch (error) {
       console.error('Error creating a checkout session:', error);
     }
@@ -43,7 +42,7 @@ const DonationButton = ({ stripePublicKey }) => {
         color: '#ffffff',
         border: 'none',
         borderRadius: '4px',
-        cursor: 'pointer'
+        cursor: 'pointer',
       }}
     >
       Donate

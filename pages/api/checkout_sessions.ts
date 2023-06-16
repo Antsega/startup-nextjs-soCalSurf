@@ -1,15 +1,21 @@
-import checkoutSessionHandler from './api/checkout_sessions';
+import checkoutSessionHandler from '../api/checkout_sessions';
+import { NextApiRequest, NextApiResponse } from 'next';
+import Stripe from 'stripe';
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-export default async function handler(req, res) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create({
         line_items: [
           {
-            price: 1,
+            price_data: {
+              product: 'prod_O5dwfwvvxH6siw', // Your product ID
+              unit_amount: 1000, // Unit amount in cents. For example, 1000 for $10.00
+              currency: 'usd', // currency code
+            },
             quantity: 1,
           },
         ],
