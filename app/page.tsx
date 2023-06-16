@@ -1,3 +1,6 @@
+import React from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+
 import MentorshipSectionTwo from "@/components/Mentorship/MentorshipSectionOne";
 import MentorshipSectionOne from "@/components/Mentorship/MentorshipSectionTwo";
 import Brands from "@/components/Brands";
@@ -8,6 +11,11 @@ import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
 import { Inter } from "@next/font/google";
+import StripeCheckout from '@/components/Checkout/StripeCheckout';
+
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || ''
+);
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +31,7 @@ export default function Home() {
       <MentorshipSectionTwo />
       <Testimonials />
       <Contact />
+      <StripeCheckout />
     </>
   );
 }
