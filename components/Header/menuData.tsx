@@ -32,7 +32,7 @@ const menuData: Menu[] = [
     newTab: false,
   },
   {
-    id: 3,
+    id: 6,
     title: "Donate",
     path: "/donate",
     newTab: false,
